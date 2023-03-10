@@ -1,0 +1,30 @@
+Ensure you have completed questions 1 to 4 from last week first.
+
+The main exercise is to add "Buy" functionality to your AJAX front-end fron last week, so that a user can buy a given song. Songs will be bought by sending an AJAX POST request to the "buy" route of your web API.
+
+Modify your AJAX front-end so that there is a "Buy" button for each search result. When the user clicks on the "Buy" button, you send an AJAX POST request to your "buy" route from week 1. To do this:
+
+Standard Questions
+1.For each song (i.e. within the forEach), create a paragraph using document.createElement(), and set its innerHTML to the details of that song, taken from the JSON. The basic logic you are aiming for is:
+songs.forEach ( song => {
+    // Create the paragraph 
+    // Set the innerHTML of the paragraph to the song details
+    // Add the paragraph to the <div> (question 2)
+    // Create a "Buy" button, with event handler (question 3 onwards)
+});
+2.Using appendChild(), append that paragraph to the results <div>.
+3.Create a button using the DOM, specifically document.createElement() (see above). You should create an input element and set its type to button using setAttribute(), e.g:
+const buttonElement = document.createElement("input"); 
+buttonElement.setAttribute("type", "button");
+4.Specify the text on the button by setting its value with setAttribute(), in the same way that you set the type to button.
+5.Using addEventListener() to add an event handler to the button. The event handler should be an arrow function. We did this last week with AJAX. For example:
+//Note the arrow function needs to be async if we are using await
+buttonElement.addEventListener ("click", async(e) => 
+    { 
+        // fill in your arrow function here.
+        // It should call your "buy" web API route, passing in the ID of the current song.
+    } 
+);
+6.In the button's event handler, send a POST request to the buy route on your server. Obtain the ID from the JSON returned from the search. For now, you do not need to pass any POST data as JSON to the route, just add the ID to the URL.
+7.Add the button you have created to your results <div> using appendChild() to append it.
+8.Add code to the AJAX front end to handle HTTP status codes other than 200. If they occur, display an appropriate message to the user with alert().
