@@ -1,0 +1,11 @@
+Build a version of your HitTastic! AJAX site using React. **Please note that a React application needs to be run with a server of some kind, such as your Express server.** To do this:
+
+1. In your `public` folder, create a web page which links in the appropriate React and Babel libraries, and contains a single root <div>. Your React components should be rendered to this <div>.
+2. Now start working on your React code, within a JavaScript file also in the `public` folder. Initially, create a single component with a search box for the artist, a button, and a results <div>
+3. Next, connect the button to an event handler function within the component. The event handler should initially display an alert box with a message of "You entered the artist " plus the artist name.
+4. Once you've got this working, create a ***state*** variable to represent search results returned from the server, together with a function to update the state variable.
+5. Now write a function ***inside your component function*** to perform an AJAX request to your Session 1 web API (the search by artist route) and update the results <div> to contain the ***raw JSON*** from the server. You should display title, artist, year and quantity. **Store the array of objects returned from the web API in the state variable you created in the previous step, and set the contents of the results <div> to this state variable, converted to a string using `JSON.stringify()`.**
+6. Next, try displaying the search results in a user-readable form, rather than JSON.
+    - ***Hint***: you will need to convert your array of objects to JSX in your component and return it, as shown in the shopping cart example above.
+7. Once you've completed this, try using ***a parent component and two sub-components*** (see the "lifting state up" section above), one containing the text field and button, and another containing the results <div>. By storing the data returned from the AJAX in the parent component's ***state***, update the search <div> every time the button is clicked.
+8. **Requires further research:** Try using `create-react-app` for your application. See the documentation there. You might also find this information on [JavaScript modules](https://nwcourses.github.io/COM620/week4.html) useful.
