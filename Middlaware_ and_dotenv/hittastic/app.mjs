@@ -2,6 +2,7 @@ import express from "express";
 import Database from "better-sqlite3";
 import chalk from 'chalk';   // for the green tick 
 
+
 import 'dotenv/config';             // dotenv
 const {PORT, DB_DATABASE}  = process.env
 
@@ -13,8 +14,7 @@ app.set("view engine", "ejs");
 app.use("/public", express.static('./public/')); // for the script folder to be recognised 
 
 
-// not the double backslashes!! important othervise it would not work!! 
-//const db = new Database("C:\\Users\\donbo\\Documents\\Coding\\WebDev\\webdev\\Middlaware_ and_dotenv\\hittastic\\wadsongs.db") // original one 
+
 
 /////////////////////// express routes: 
 import userRouter from './public/scripts/user.mjs'

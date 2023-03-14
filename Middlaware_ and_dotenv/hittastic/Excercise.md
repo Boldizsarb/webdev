@@ -14,21 +14,9 @@ The exercise will allow you to practise with routers, middleware and `dotenv`.
 6. Now, similarly, move all your routes to handle songs (i.e. everything you did in week 2) to a separate router inside the file `songs.mjs`. In the same way that you did for your `users` router, include this router under the top-level route `/songs`, and test it by searching for all songs by a particular artist by requesting the correct URL in your browser.
 7. Install `dotenv` and `import` it in your main server application. Add ***middleware*** to your server so that any `POST` request can only be accessed if the environment variable `process.env.APP_USER` exists. (This is a way of simulating a user being logged in without writing a full login system, which we have not done yet). To test whether `process.env.username` exists we can test whether it's `undefined`:Test this out by first trying to access a `POST` route without creating a `.env` file. Test this out in RESTer; you should get a 401 error and the "Go away" message as a response. Then, create a `.env` file with a `username` environment variable. The username can be anything, for example:You should now be able to access your POST route.
     
-    ```
-    if(process.env.APP_USER === undefined) {
-        // process.env.APP_USER does not exist (it's undefined)
-        // Return a 401 (Unauthorized) HTTP code, with a JSON error message
-        res.status(401).json({error: "You're not logged in. Go away!"});
-    } else {
-        // username exists, carry on...
-    }
-    
-    ```
-    
-    ```
-    APP_USER=AdamAdams
-    ```
     
 8. As shown in the example with CORS, write the user-checking middleware in a separate module as a function and export it. Then, `import` it and `use()` it in the main server file by specifying the name of the function exported from the module.
-9. Prevent all access to the `/users` group of routes (see Question 3) unless the username exists in `.env`. Use the same middleware for this.
-10. **Advanced question:** Modify your answer to the previous question so that, if the `/users` group of routes is requested, the middleware checks that the `APP_USER` username is ***actually in the database*** (use a SELECT statement to do this) and that the value of the `isadmin` column of this user is 1. In this way, only admin users can access the `/users` routes which, for data protection reasons, is probably a good idea!
+
+Prevent all access to the `/users` group of routes (see Question 3) unless the username exists in `.env`. Use the same middleware for this.
+
+1. **Advanced question:** Modify your answer to the previous question so that, if the `/users` group of routes is requested, the middleware checks that the `APP_USER` username is ***actually in the database*** (use a SELECT statement to do this) and that the value of the `isadmin` column of this user is 1. In this way, only admin users can access the `/users` routes which, for data protection reasons, is probably a good idea!

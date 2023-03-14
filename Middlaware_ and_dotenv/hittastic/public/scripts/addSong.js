@@ -12,7 +12,7 @@ form.addEventListener("submit", function(event) {
   const quantity = form.elements.quantity.value;
 
   const xhr = new XMLHttpRequest();
-  xhr.open("POST", "/song/create", true);
+  xhr.open("POST", "/songs/song/create", true);
   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
   xhr.onreadystatechange = function() {
     if (xhr.readyState === XMLHttpRequest.DONE) {
