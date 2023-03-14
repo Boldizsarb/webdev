@@ -9,18 +9,21 @@ let { DB_DATABASE,APP_USER}  = process.env
 //const db = new Database("C:\\Users\\donbo\\Documents\\Coding\\WebDev\\webdev\\Middlaware_ and_dotenv\\hittastic\\wadsongs.db")
 const db = new Database(DB_DATABASE)
 
-APP_USER = "adam"  // assigning the dotenv variable's value 
+  // assigning the dotenv variable's value 
 
- mapRouter.post( '*', (req,res,next) => {                       // this one only restricts post requests but doesnt preceive variable change! need to restart the server to work 
-    if(APP_USER === undefined || APP_USER === "") {
+
+mapRouter.post( '*', (req,res,next) => {      // if there is no user it wont do shit ;)                   
+    //if(APP_USER === undefined || APP_USER === "") {
+        if(req.session.username == null) {
+            console.log(req.session.username)
         // process.env.APP_USER does not exist (it's undefined)
         // Return a 401 (Unauthorized) HTTP code, with a JSON error message
         res.status(401).json({error: "You're not logged in. Go away!"});
-        alert("Log in first mate")
         console.log("no user")
+        
     } else {
-    console.log(`Received a POST request at ${Date.now()} milliseconds. By ${APP_USER}`);
-    next();
+        console.log(`Received a POST request at ${Date.now()} milliseconds. By ${req.session.username}`);
+        next();
     }
 });
 
