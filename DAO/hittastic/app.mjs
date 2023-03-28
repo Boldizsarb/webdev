@@ -21,7 +21,7 @@ const sessDb = new Database('session.db');
 
 // create on object for creating the session store
 // SqliteStore is similar in concept to a class
-const SqliteStore = betterSqlite3Session(expressSession, sessDb);
+const SqliteStore = betterSqlite3Session(expressSession, sessDb); ///// the session variable needs to come before the routes!!! othervise it wont work
 app.use(expressSession({
   // Specify the session store to be used.
       store: new SqliteStore(),    //sql lite store 
